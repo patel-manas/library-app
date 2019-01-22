@@ -109,9 +109,7 @@ export class BooksHomeComponent implements OnInit {
   formHeader(data) {
     const uniqueData = Array.from(new Set(data));
     const formedData: SelectItem[] =  uniqueData.map(eachdata => {
-      const eachOption: SelectItem = {label: '', value: ''};
-      eachOption['label'] = eachdata;
-      eachOption['value'] = eachdata;
+      const eachOption: SelectItem = {label: eachdata, value: eachdata};
       return eachOption;
     });
     return formedData;
