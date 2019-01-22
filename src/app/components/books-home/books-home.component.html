@@ -1,3 +1,74 @@
-<p>
-  books-home works!
-</p>
+<!-- nav br section -->
+
+<div class="wrapper cf">
+  <div class="content">
+    <nav class="navbar">
+      <h2>BookLibrary App</h2>
+    </nav>
+  </div>
+</div>
+
+<!-- result and filters-->
+<section class="result">
+  <span class="result-book-number">{{books.length}} books found</span>
+  <span class="result-book-filter"><button (click)="openFilter()"> Filter</button></span>
+  <span class="result-book-search"><input type="text" placeholder="serch your book" (change)="filterBySearch($event)" /></span>
+  <select class="result-book-sort" (change)="sortBy($event.target.value)">
+    <option>Sort</option>
+    <option>rating high to low</option>
+    <option>rating low to high</option>
+    <option>availability</option>
+    <option>pages low to high</option>
+    <option>pages high to low</option>
+    <option>none</option>
+  </select>
+</section>
+<p-sidebar [(visible)]="isFilterOpen" position="right" [blockScroll] = "true" [baseZIndex]="10000">
+
+    <p-listbox
+    id = "filtor-listbox-cat"
+    [options]="catagories"
+    multiple="multiple"
+    checkbox="checkbox"
+    filter="filter"
+    optionLabel="label"
+    (onChange) ="setCatFilter($event)"
+     [(ngModel)]="selectedCat" >
+        <p-header>
+          catagories
+        </p-header>
+      </p-listbox>
+      <p>Selected Cities: <span *ngFor="let c of selectedCat" style="margin-right: 10px">{{c.name}}</span></p>
+    <p-listbox
+    id = "filtor-listbox-aut"
+    [options]="authors"
+    multiple="multiple"
+    checkbox="checkbox"
+    filter="filter"
+     optionLabel="label"
+     (onChange) ="setAuthorFilter($event)"
+     [(ngModel)]="selectedAut" >
+        <p-header>
+          Authors
+        </p-header>
+      </p-listbox>
+      <p-button label="Apply" (onClick)="applyFilters()" class="ui-button-success" > Apply</p-button>
+      <p-button label="Cancel" (onClick)="cancelFilters()" > Cancel</p-button>
+      <p-button label="Reset" (onClick)="resetlFilters()" class="ui-button-warning"> Reset</p-button>
+</p-sidebar>
+
+
+<!--books-->
+<section class="books-wrapper">
+  <div class="book-cards">
+      <app-book-card
+          *ngFor="let book of books; let i=index"
+          id={{book._id}}
+          title = "{{book.title}}"
+          quote = "{{book.quote}}"
+          author = "{{book.author}}"
+          cover = "{{book.cover}}"
+          year = "{{book.year}}"
+          ></app-book-card>
+  </div>
+</section>
