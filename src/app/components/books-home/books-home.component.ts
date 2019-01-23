@@ -70,7 +70,7 @@ export class BooksHomeComponent implements OnInit {
         break;
     }
   }
-  openFilter() {
+  openFilter(evt) {
     this.isFilterOpen = true;
   }
   applyFilters() {
