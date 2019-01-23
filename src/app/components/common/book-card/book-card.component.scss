@@ -35,12 +35,6 @@ h1 {
 			display: table;
 			clear: both;
 		}
-		li {
-			display: inline-block;
-		}
-		a {
-			color: #fff;
-		}
 		span {
 			position: absolute;
 			left: 50%;
@@ -51,7 +45,7 @@ h1 {
 			transform: translate(-50%, 0);
 		}
 	}
-	.wrapper {
+	.wrapper_cards{
 		background-color: #fff;
 		min-height: 400px;
 		position: relative;
@@ -61,7 +55,15 @@ h1 {
 			.data {
 				transform: translateY(0);
 			}
-		}
+    }
+    .header {
+      .date {
+        .year {
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
 	}
 	.data {
 		position: absolute;
@@ -100,7 +102,7 @@ h1 {
 		cursor: pointer;
 	}
 }
-.wrapper {
+.wrapper_cards {
 	width: 270px;
 	&:hover {
 		.menu-content {
@@ -141,7 +143,11 @@ h1 {
 }
 .data {
 	color: #fff;
-	transform: translateY(calc(70px + 4em));
+  transform: translateY(calc(70px + 4em));
+}
+.fa-star::before {
+  color: yellow;
+  font-weight: bold;
 }
 .title {
 	a {

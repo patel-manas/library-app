@@ -11,8 +11,8 @@
 <!-- result and filters-->
 <section class="result">
   <span class="result-book-number">{{books.length}} books found</span>
-  <span class="result-book-filter"><button (click)="openFilter()"> Filter</button></span>
   <span class="result-book-search"><input type="text" placeholder="serch your book" (change)="filterBySearch($event)" /></span>
+  <span class="result-book-filter"><button (click)="openFilter()"> Filter</button></span>
   <select class="result-book-sort" (change)="sortBy($event.target.value)">
     <option>Sort</option>
     <option>rating high to low</option>
@@ -23,8 +23,8 @@
     <option>none</option>
   </select>
 </section>
-<p-sidebar [(visible)]="isFilterOpen" position="right" [blockScroll] = "true" [baseZIndex]="10000">
 
+<p-sidebar styleClass = "filter-side-bar" [(visible)]="isFilterOpen" position="right" [blockScroll] = "true" [baseZIndex]="10000">
     <p-listbox
     id = "filtor-listbox-cat"
     [options]="catagories"
@@ -38,9 +38,8 @@
           catagories
         </p-header>
       </p-listbox>
-      <p>Selected Cities: <span *ngFor="let c of selectedCat" style="margin-right: 10px">{{c.name}}</span></p>
     <p-listbox
-    id = "filtor-listbox-aut"
+    styleClass = "filter-listbox-aut"
     [options]="authors"
     multiple="multiple"
     checkbox="checkbox"
@@ -52,9 +51,11 @@
           Authors
         </p-header>
       </p-listbox>
+      <div class="filter-button-group">
       <p-button label="Apply" (onClick)="applyFilters()" class="ui-button-success" > Apply</p-button>
       <p-button label="Cancel" (onClick)="cancelFilters()" > Cancel</p-button>
       <p-button label="Reset" (onClick)="resetlFilters()" class="ui-button-warning"> Reset</p-button>
+    </div>
 </p-sidebar>
 
 
@@ -69,6 +70,9 @@
           author = "{{book.author}}"
           cover = "{{book.cover}}"
           year = "{{book.year}}"
+          star = "{{book.rating}}"
+          pages = "{{book.pages}}"
+          rented = "{{book.rented}}"
           ></app-book-card>
   </div>
 </section>

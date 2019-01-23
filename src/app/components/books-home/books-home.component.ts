@@ -14,11 +14,11 @@ export class BooksHomeComponent implements OnInit {
   books: any = [];
   books$: any;
   isFilterOpen = false;
-  catagories:  SelectItem[] = [];
-  authors: SelectItem[] = [];
+  catagories:  any[] = [];
+  authors: any[] = [];
   ratings: any = [1, 2, 3, 4, 5];
-  selectedCat: SelectItem[];
-  selectedAut: SelectItem[];
+  selectedCat: any[];
+  selectedAut: any[];
   //{ '_id': number; 'title': string; 'quote': string; 'cover': string; 'author': string; 'publication': string; 'year': number; 'rating': number; 'catagory': string; 'sold': number; 'pages': number; 'rented': boolean; }[];
 
   constructor() {
@@ -108,8 +108,8 @@ export class BooksHomeComponent implements OnInit {
 
   formHeader(data) {
     const uniqueData = Array.from(new Set(data));
-    const formedData: SelectItem[] =  uniqueData.map(eachdata => {
-      const eachOption: SelectItem = {label: '', value: ''};
+    const formedData: any[] =  uniqueData.map(eachdata => {
+      const eachOption: any = {label: '', value: ''};
       eachOption['label'] = eachdata;
       eachOption['value'] = eachdata;
       return eachOption;

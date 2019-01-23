@@ -1,7 +1,7 @@
 <div class="row">
   <div class="card">
     <!-- <div class="wrapper" style= "{background: url({{url}}) center / cover no-repeat}"> -->
-    <div class="wrapper" [ngStyle]="{'background-image': 'url(' + cover + ')','background-repeat': 'no-repeat','background-size': 'cover','background-position': 'center'}">
+    <div class="wrapper_cards" [ngStyle]="{'background-image': 'url(' + cover + ')','background-repeat': 'no-repeat','background-size': 'cover','background-position': 'center'}">
     <!-- <div class="wrapper"> -->
       <div class="header">
         <div class="date">
@@ -13,9 +13,9 @@
           <span class="author">{{author}}</span>
           <h1 class="title">{{title}}</h1>
           <p class="text">{{quote}}</p>
-          <span>start</span>
-          <span>page</span>
-          <span>rented</span>
+          <span><p-rating class = "star-rating" [ngModel]="star" readonly="true" [cancel]="false"></p-rating></span>
+          <span *ngIf="rented === 'true'; else sad"><i class="fa fa-smile-o" aria-hidden="true"></i></span>
+          <ng-template #sad><i class="fa fa-frown-o" aria-hidden="true"></i></ng-template>
           <button class="button-add"(click)="addToCart()">Add to Cart</button>
         </div>
       </div>

@@ -40,11 +40,37 @@ body {
   z-index: 1000;
   background-color: aliceblue;
   display: block;
-  height: 25px;
-  width: 100%
+  height: 40px;
+  width: 100%;
+    .result-book-number {
+      margin-left: 0px;
+    }
+    .result-book-filter{
+
+    }
+    .result-book-search{
+      margin-left: 100px;
+        input {
+          padding: 5px 0 5px;
+          width: 40%;
+          height: 25px;
+          background-color: aliceblue;
+          border: none;
+          border-bottom: 1px solid #34495e;
+          font-size: 20px;
+        }
+        input:focus{
+          outline: none;
+          border-color: #2980b9;
+        }
+
+    }
+    .result-book-sort{
+
+    }
 }
 .books-wrapper {
-  margin-top: 50px
+  margin-top: 100px
 }
 
 .filter-popup {
@@ -56,7 +82,11 @@ z-index: 1200;
   overflow: auto;
 }
 
-// #filtor-listbox {
+.filter-side-bar {
+.filter-button-group {
+    padding-top: 10px;
+}
+}
 .ui-listbox.ui-inputtext.ui-widget.ui-widget-content.ui-corner-all {
   padding: 0;
   width: 259px;

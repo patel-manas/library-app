@@ -11,11 +11,14 @@ export class BookCardComponent implements OnInit {
   @Input() author: string;
   @Input() cover: string;
   @Input() year: string;
+  @Input() star: string;
+  @Input() pages : string;
+  @Input() rented: string;
   constructor() {
   }
 
   ngOnInit() {
-    this.url =('https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg');
+    this.url = ('https://tvseriescritic.files.wordpress.com/2016/10/stranger-things-bicycle-lights-children.jpg');
   }
 
   addToCart() {

@@ -17,6 +17,7 @@ import {SidebarModule} from 'primeng/sidebar';
 import {PanelMenuModule} from 'primeng/panelmenu';
 import {ListboxModule} from 'primeng/listbox';
 import {ButtonModule} from 'primeng/button';
+import {RatingModule} from 'primeng/rating';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import {ButtonModule} from 'primeng/button';
     HttpClientModule,
     ListboxModule,
     ButtonModule,
+    RatingModule,
     PanelMenuModule
   ],
   providers: [],
