@@ -4,6 +4,7 @@ import { BOOKS } from './../../../assets/data/BOOKS';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import {SelectItem} from 'primeng/api';
+import { BookServiceService } from '../../services/book-service.service';
 @Component({
   selector: 'app-books-home',
   templateUrl: './books-home.component.html',
@@ -19,9 +20,10 @@ export class BooksHomeComponent implements OnInit {
   ratings: any = [1, 2, 3, 4, 5];
   selectedCat: any[];
   selectedAut: any[];
+  searchTerm: string;
   //{ '_id': number; 'title': string; 'quote': string; 'cover': string; 'author': string; 'publication': string; 'year': number; 'rating': number; 'catagory': string; 'sold': number; 'pages': number; 'rented': boolean; }[];
 
-  constructor() {
+  constructor( private _bookService: BookServiceService) {
     console.log({ BOOKS });
     this.books$ = Observable.from([...BOOKS]);
     this.books = [...BOOKS];
@@ -33,8 +35,10 @@ export class BooksHomeComponent implements OnInit {
 
   ngOnInit() {}
 
-  filterBySearch(event) {
-    console.log({ event });
+  filterBySearch() {
+    console.log(this.searchTerm);
+    this._bookService.gerSearchResults(this.searchTerm)
+                     .subscribe(books => this.books = books);
   }
 
   sortBy(sortParameter) {
@@ -115,5 +119,11 @@ export class BooksHomeComponent implements OnInit {
       return eachOption;
     });
     return formedData;
+  }
+  userInfo(event, userInfoPanel) {
+    userInfoPanel.toggle(event);
+  }
+  userCart(event, userCartPanel) {
+    userCartPanel.toggle(event);
   }
 }

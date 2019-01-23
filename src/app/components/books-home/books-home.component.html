@@ -4,15 +4,37 @@
   <div class="content">
     <nav class="navbar">
       <h2>BookLibrary App</h2>
+      <span class="user-cart" (click)="userCart($event,userCartPanel)">
+        <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+        <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+      </span>
+      <span class="user-icon" (click)="userInfo($event,userInfoPanel)">
+        <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+      </span>
     </nav>
   </div>
 </div>
+<p-overlayPanel #userInfoPanel>
+    <div>UserName</div>
+    <div>LogOut</div>
+</p-overlayPanel>
+<p-overlayPanel #userCartPanel>
+    <div>UserName</div>
+    <div>LogOut</div>
+</p-overlayPanel>
 
 <!-- result and filters-->
 <section class="result">
-  <span class="result-book-number">{{books.length}} books found</span>
-  <span class="result-book-search"><input type="text" placeholder="serch your book" (change)="filterBySearch($event)" /></span>
-  <span class="result-book-filter"><button (click)="openFilter()"> Filter</button></span>
+  <!-- <span class="result-book-number">{{books.length}} books found</span> -->
+  <span class="result-book-search">
+    <input
+      type="text"
+      placeholder="serch your book"
+      [(ngModel)] = "searchTerm"
+      (change)="filterBySearch()" /><i class="fa fa-search fa-2x" (click)="filterBySearch()"></i>
+  </span>
+  <!-- <span class="result-book-filter"><button (click)="openFilter()"> <i class="fa fa-filter"></i></button></span> -->
+  <p-button styleClass = "result-book-filter" (onClick)="openFilter($event)" icon="fa fa-fw fa-filter"></p-button>
   <select class="result-book-sort" (change)="sortBy($event.target.value)">
     <option>Sort</option>
     <option>rating high to low</option>

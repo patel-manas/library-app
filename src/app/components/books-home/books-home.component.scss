@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +5,7 @@
 }
 
 body {
-  background-color: #F5F7FA;
+  background-color: #f5f7fa;
   line-height: 1.2;
 }
 .wrapper {
@@ -26,8 +25,40 @@ body {
 .navbar {
   padding: 20px;
   width: auto;
-  background-color: #434A54;
+  background-color: #434a54;
   color: #fff;
+  h2 {
+    display: inline;
+  }
+  span {
+    display: inline;
+  }
+  .user-cart {
+    margin-left: 1025px;
+    #lblCartCount {
+      font-size: 12px;
+      background: #ff0000;
+      color: #fff;
+      padding: 0 5px;
+      vertical-align: top;
+      margin-left: -10px;
+    }
+    .badge {
+      padding-left: 9px;
+      padding-right: 9px;
+      -webkit-border-radius: 9px;
+      -moz-border-radius: 9px;
+      border-radius: 9px;
+    }
+
+    .label-warning[href],
+    .badge-warning[href] {
+      background-color: #c67605;
+    }
+  }
+  .user-icon {
+    margin-left: 20px;
+  }
 }
 
 .book-cards {
@@ -42,39 +73,48 @@ body {
   display: block;
   height: 40px;
   width: 100%;
-    .result-book-number {
-      margin-left: 0px;
+  .result-book-number {
+    margin-left: 0px;
+  }
+  .result-book-filter {
+    margin-left: 200px;
+    font-size: 17px;
+    color: black;
+    background: transparent;
+    border-radius: 50%;
+    border-color: black;
+  }
+  .result-book-filter .ui-button:hover {
+    color: white;
+    background: black;
+    border-color: white;
+  }
+  .result-book-search {
+    margin-left: 400px;
+    input {
+      padding: 5px 0 5px;
+      width: 40%;
+      height: 25px;
+      background-color: aliceblue;
+      border: none;
+      border-bottom: 1px solid #34495e;
+      font-size: 20px;
+      text-align: center;
     }
-    .result-book-filter{
-
+    input:focus {
+      outline: none;
+      border-color: #2980b9;
     }
-    .result-book-search{
-      margin-left: 100px;
-        input {
-          padding: 5px 0 5px;
-          width: 40%;
-          height: 25px;
-          background-color: aliceblue;
-          border: none;
-          border-bottom: 1px solid #34495e;
-          font-size: 20px;
-        }
-        input:focus{
-          outline: none;
-          border-color: #2980b9;
-        }
-
-    }
-    .result-book-sort{
-
-    }
+  }
+  .result-book-sort {
+  }
 }
 .books-wrapper {
-  margin-top: 100px
+  margin-top: 100px;
 }
 
 .filter-popup {
-z-index: 1200;
+  z-index: 1200;
 }
 
 #author-filter {
@@ -83,9 +123,9 @@ z-index: 1200;
 }
 
 .filter-side-bar {
-.filter-button-group {
+  .filter-button-group {
     padding-top: 10px;
-}
+  }
 }
 .ui-listbox.ui-inputtext.ui-widget.ui-widget-content.ui-corner-all {
   padding: 0;
