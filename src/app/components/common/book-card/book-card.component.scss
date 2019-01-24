@@ -149,6 +149,13 @@ h1 {
   color: yellow;
   font-weight: bold;
 }
+.face-icon, .star-wrapper {
+  display: inline-block;
+}
+.star-rating .ui-rating a {
+  color: yellow;
+  text-decoration: none;
+}
 .title {
 	a {
 		color: #fff;

@@ -13,10 +13,11 @@
           <span class="author">{{author}}</span>
           <h1 class="title">{{title}}</h1>
           <p class="text">{{quote}}</p>
-          <span><p-rating class = "star-rating" [ngModel]="star" readonly="true" [cancel]="false"></p-rating></span>
-          <span *ngIf="rented === 'true'; else sad"><i class="fa fa-smile-o" aria-hidden="true"></i></span>
+          <span class="star-wrapper"><p-rating class = "star-rating" [ngModel]="star" readonly="true" [cancel]="false"></p-rating></span>
+          <span *ngIf="result(star); else sad" class="face-icon"><i class="fa fa-smile-o" aria-hidden="true"></i></span>
           <ng-template #sad><i class="fa fa-frown-o" aria-hidden="true"></i></ng-template>
-          <button class="button-add"(click)="addToCart()">Add to Cart</button>
+          <button *ngIf="addMode" class="button-add"(click)="addToCart()">Add to Cart</button>
+          <button *ngIf="!addMode" class="button-add"(click)="removeFromCart()">Remove</button>
         </div>
       </div>
     </div>

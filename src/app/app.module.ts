@@ -11,6 +11,7 @@ import { BooksHomeComponent } from './components/books-home/books-home.component
 import { BookCartComponent } from './components/book-cart/book-cart.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BookServiceService } from './services/book-service.service';
+import { CustomDropdownComponent } from './components/common/custom-dropdown/custom-dropdown.component';
 
 // primeng
 import {DialogModule} from 'primeng/dialog';
@@ -21,6 +22,7 @@ import {ButtonModule} from 'primeng/button';
 import {RatingModule} from 'primeng/rating';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import { LoginComponent } from './components/login/login.component';
+import {DropdownModule} from 'primeng/dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { LoginComponent } from './components/login/login.component';
     HeaderComponent,
     BooksHomeComponent,
     BookCartComponent,
-    LoginComponent
+    LoginComponent,
+    CustomDropdownComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     ListboxModule,
     ButtonModule,
+    DropdownModule,
     RatingModule,
     OverlayPanelModule,
     PanelMenuModule

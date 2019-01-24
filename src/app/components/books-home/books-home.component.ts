@@ -14,13 +14,25 @@ import { BookServiceService } from '../../services/book-service.service';
 export class BooksHomeComponent implements OnInit {
   books: any = [];
   books$: any;
+  cartItem = 0;
   isFilterOpen = false;
   catagories:  any[] = [];
   authors: any[] = [];
   ratings: any = [1, 2, 3, 4, 5];
   selectedCat: any[];
   selectedAut: any[];
+  activeMenu:any;
   searchTerm: string;
+  sortMenuItems = ['rating high to low',
+                    'rating low to high',
+                    'availability', 'pages low to high', 'pages high to low',
+                    'none'].map((item) => {
+                      const option = {};
+                      option['name'] = item;
+                      option['code'] = item;
+                      return option;
+                    });
+
   //{ '_id': number; 'title': string; 'quote': string; 'cover': string; 'author': string; 'publication': string; 'year': number; 'rating': number; 'catagory': string; 'sold': number; 'pages': number; 'rented': boolean; }[];
 
   constructor( private _bookService: BookServiceService) {
@@ -42,8 +54,8 @@ export class BooksHomeComponent implements OnInit {
   }
 
   sortBy(sortParameter) {
-    console.log(sortParameter);
-    switch (sortParameter) {
+    console.log('-->',sortParameter.code);
+    switch (sortParameter.code) {
       case 'Sort':
         this.books = [...BOOKS];
         break;
@@ -96,8 +108,11 @@ export class BooksHomeComponent implements OnInit {
     }
     this.books = res;
     console.log('a4 filter', this.books);
+    this.isFilterOpen = false;
   }
-  cancelFilters() {}
+  cancelFilters() {
+    this.isFilterOpen = false;
+  }
   setCatFilter(e) {
     // this.selectedCat = [...this.selectedCat, ...e.value];
     console.log('cat', e, this.selectedCat);
@@ -107,7 +122,9 @@ export class BooksHomeComponent implements OnInit {
     console.log('aut', e, this.selectedAut);
   }
   resetlFilters() {
-
+    this.selectedAut = [];
+    this.selectedCat = [];
+    this.books = [...BOOKS];
   }
 
   formHeader(data) {
@@ -124,6 +141,12 @@ export class BooksHomeComponent implements OnInit {
     userInfoPanel.toggle(event);
   }
   userCart(event, userCartPanel) {
-    userCartPanel.toggle(event);
+    // userCartPanel.toggle(event);
+  }
+  addedToCart() {
+    this.cartItem++;
+  }
+  removedFromCart() {
+    this.cartItem--;
   }
 }

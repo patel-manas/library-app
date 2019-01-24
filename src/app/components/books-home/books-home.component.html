@@ -3,10 +3,11 @@
 <div class="wrapper cf">
   <div class="content">
     <nav class="navbar">
-      <h2>BookLibrary App</h2>
+        <img src="../../../assets/images/book.svg" alt="logo" style="position: absolute;display: block;">
+        <h1 style="display: inline-block; margin-left: 32px">Book Library</h1>
       <span class="user-cart" (click)="userCart($event,userCartPanel)">
         <i class="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
-        <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+        <span *ngIf = "cartItem !== 0" class='badge badge-warning' id='lblCartCount'>{{cartItem}}</span>
       </span>
       <span class="user-icon" (click)="userInfo($event,userInfoPanel)">
         <i class="fa fa-user fa-2x" aria-hidden="true"></i>
@@ -29,13 +30,23 @@
   <span class="result-book-search">
     <input
       type="text"
-      placeholder="serch your book"
+      placeholder="Search here"
       [(ngModel)] = "searchTerm"
-      (change)="filterBySearch()" /><i class="fa fa-search fa-2x" (click)="filterBySearch()"></i>
+      (change)="filterBySearch()" /><i class="fa fa-search" (click)="filterBySearch()"></i>
   </span>
   <!-- <span class="result-book-filter"><button (click)="openFilter()"> <i class="fa fa-filter"></i></button></span> -->
   <p-button styleClass = "result-book-filter" (onClick)="openFilter($event)" icon="fa fa-fw fa-filter"></p-button>
-  <select class="result-book-sort" (change)="sortBy($event.target.value)">
+  <!-- <div class="result-book-sort">
+    <app-custom-dropdown (sortEmitter)="sortBy($event)" menu="sortMenuItems"></app-custom-dropdown>
+  </div> -->
+  <p-dropdown
+    styleClass = "result-book-sort"
+    [options]="sortMenuItems"
+    [(ngModel)]="activeMenu"
+    placeholder="Sort"
+    (onChange) = "sortBy($event.value)"
+    optionLabel="name"></p-dropdown>
+  <!-- <select placeholder ="Sort" class="result-book-sort" (change)="sortBy($event.target.value)">
     <option>Sort</option>
     <option>rating high to low</option>
     <option>rating low to high</option>
@@ -43,9 +54,8 @@
     <option>pages low to high</option>
     <option>pages high to low</option>
     <option>none</option>
-  </select>
+  </select> -->
 </section>
-
 <p-sidebar styleClass = "filter-side-bar" [(visible)]="isFilterOpen" position="right" [blockScroll] = "true" [baseZIndex]="10000">
     <p-listbox
     id = "filtor-listbox-cat"
@@ -95,6 +105,8 @@
           star = "{{book.rating}}"
           pages = "{{book.pages}}"
           rented = "{{book.rented}}"
+          (addToCartEmmiter) = "addedToCart()"
+          (removeFromCartEmmiter) = "removedFromCart()"
           ></app-book-card>
   </div>
 </section>
